@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "149098176087",
+    "project_id": "login-with-399f5",
+    "storage_bucket": "login-with-399f5.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:149098176087:android:d3212b2b751a12a32dcd12",
+        "android_client_info": {
+          "package_name": "com.sinnoor.login"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "149098176087-ca76jujnobmq0hpne7fkmjeb940rpve3.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBOuEOVpPiy4CbIVbz1V8WolhOuM6wTsNE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "149098176087-7u2elqhfmhvdt1jt2qdmv268meul8i89.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
