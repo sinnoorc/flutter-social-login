@@ -1,5 +1,4 @@
 import 'package:firebase_core/firebase_core.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_login/firebase_options.dart';
 
@@ -18,13 +17,14 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return CupertinoApp(
-      title: 'Flutter Demo',
-      theme: const CupertinoThemeData(
-        primaryColor: Colors.blue,
-        brightness: Brightness.light,
+    return MaterialApp(
+      title: 'Flutter Social Login',
+      theme: ThemeData(
+        primarySwatch: Colors.blue,
+        useMaterial3: true,
       ),
       home: AuthService().handleAuthState(),
+      debugShowCheckedModeBanner: false,
     );
   }
 }

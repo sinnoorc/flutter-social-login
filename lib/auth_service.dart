@@ -1,4 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
@@ -29,6 +30,28 @@ class AuthService {
         idToken: googleAuth.idToken,
       );
       return await FirebaseAuth.instance.signInWithCredential(credential);
+    } on Exception catch (e) {
+      return Future.error(e);
+    }
+  }
+
+  Future<UserCredential> signWithGithub() async {
+    try {
+      final GithubAuthProvider githubProvider = GithubAuthProvider();
+      if (kIsWeb) {
+        return await FirebaseAuth.instance.signInWithPopup(githubProvider);
+      } else {
+        return throw UnimplementedError('Github login is not supported on mobile');
+      }
+    } on Exception catch (e) {
+      return Future.error(e);
+    }
+  }
+
+  Future<UserCredential> signWithFacebook() async {
+    try {
+      final FacebookAuthProvider facebookProvider = FacebookAuthProvider();
+      return await FirebaseAuth.instance.signInWithPopup(facebookProvider);
     } on Exception catch (e) {
       return Future.error(e);
     }
