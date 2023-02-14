@@ -1,10 +1,9 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:google_login/home_screen.dart';
+import 'package:google_login/login_screen.dart';
 import 'package:google_sign_in/google_sign_in.dart';
-
-import 'home_screen.dart';
-import 'login_screen.dart';
 
 class AuthService {
   StreamBuilder handleAuthState() => StreamBuilder(
@@ -20,12 +19,12 @@ class AuthService {
 
   Future<UserCredential> signWithGoogle() async {
     try {
-      final GoogleSignInAccount? googleUser = await GoogleSignIn(
+      final googleUser = await GoogleSignIn(
         scopes: <String>['email'],
       ).signIn();
 
-      final GoogleSignInAuthentication googleAuth = await googleUser!.authentication;
-      final OAuthCredential credential = GoogleAuthProvider.credential(
+      final googleAuth = await googleUser!.authentication;
+      final credential = GoogleAuthProvider.credential(
         accessToken: googleAuth.accessToken,
         idToken: googleAuth.idToken,
       );
@@ -37,7 +36,7 @@ class AuthService {
 
   Future<UserCredential> signWithGithub() async {
     try {
-      final GithubAuthProvider githubProvider = GithubAuthProvider();
+      final githubProvider = GithubAuthProvider();
       if (kIsWeb) {
         return await FirebaseAuth.instance.signInWithPopup(githubProvider);
       } else {
@@ -50,7 +49,7 @@ class AuthService {
 
   Future<UserCredential> signWithFacebook() async {
     try {
-      final FacebookAuthProvider facebookProvider = FacebookAuthProvider();
+      final facebookProvider = FacebookAuthProvider();
       return await FirebaseAuth.instance.signInWithPopup(facebookProvider);
     } on Exception catch (e) {
       return Future.error(e);
